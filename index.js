@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const express = require("express");
 const { simpleParser } = require("mailparser");
 const { SMTPServer } = require("smtp-server");

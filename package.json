@@ -4,7 +4,10 @@
     "name": "Daniel Reszka",
     "url": "https://github.com/danielres"
   },
-  "version": "1.1.0",
+  "bin": {
+    "smtp-dev": "./index.js"
+  },
+  "version": "1.2.0",
   "main": "index.js",
   "license": "MIT",
   "private": false,
