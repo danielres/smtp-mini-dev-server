@@ -4,7 +4,7 @@
     "name": "Daniel Reszka",
     "url": "https://github.com/danielres"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
   "private": false,
@@ -12,7 +12,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "express": "^4.17.1",
     "mailparser": "^2.7.7",
     "nodemon": "^2.0.2",
