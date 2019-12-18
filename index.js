@@ -4,6 +4,8 @@ const express = require("express");
 const { simpleParser } = require("mailparser");
 const { SMTPServer } = require("smtp-server");
 
+const templates = require("./templates");
+
 const PORT = process.env.DEV_SMTP_PORT || 2500;
 const API_PORT = process.env.DEV_SMTP_API_PORT || 2501;
 
@@ -16,7 +18,7 @@ const smtp = new SMTPServer({
   onAuth(auth, session, callback) {
     // if (auth.username !== "username" || auth.password !== "password")
     //   return callback(new Error("Invalid username or password"));
-    callback(null, { user: 123 }); // dummy user to simulate auth success
+    callback(null, { user: "dummyUser" }); // using a dummy user to simulate auth success
   },
   logger: true,
   onData(stream, session, callback) {
@@ -31,11 +33,17 @@ const smtp = new SMTPServer({
   }
 });
 
-app.get("/message/:messageId", (req, res) => {
+app.get("/", (req, res) => {
+  const headers = ["messageId", "from", "to", "subject"];
+  const messages = Object.values(mailbox).reverse();
+  res.send(templates.home({ messages }));
+});
+
+app.get("/:messageId", (req, res) => {
   res.json(mailbox[req.params.messageId]);
 });
 
-app.get("/message/:messageId/:field", (req, res) => {
+app.get("/:messageId/:field", (req, res) => {
   const { field, messageId } = req.params;
   res.send(mailbox[messageId][field]);
 });
