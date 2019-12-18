@@ -8,7 +8,7 @@ Persistance is ephemeral, in-memory only.
 
 I find this to be a convenient replacement for tools like [etherreal](https://ethereal.email), [mailcatcher](https://mailcatcher.me/) and similar.
 
-#Installation
+## Installation
 
 `npm install --save-dev @danielres/smtp-mini-dev-server`\
 or\
