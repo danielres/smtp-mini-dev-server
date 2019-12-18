@@ -73,3 +73,11 @@ You can now:
   - `http://localhost:2501/<MESSAGE_ID>/html`
   - `http://localhost:2501/<MESSAGE_ID>/text`
   - ...
+
+## Screenshots
+
+![image](https://raw.githubusercontent.com/danielres/smtp-mini-dev-server/assets/homepage.png)
+
+![image](https://raw.githubusercontent.com/danielres/smtp-mini-dev-server/assets/message-data.png)
+
+![image](https://raw.githubusercontent.com/danielres/smtp-mini-dev-server/assets/message-html.png)
