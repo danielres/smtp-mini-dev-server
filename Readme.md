@@ -53,7 +53,7 @@ const sendMessage = () => {
   return new Promise((resolve, reject) => {
     transport.sendMail(message, (error, info, response) => {
       if (error) return reject(error);
-      const url = `http://localhost:2501/message/${info.messageId}/html`;
+      const url = `http://localhost:2501/${info.messageId}/html`;
       console.log({ url });
       resolve({ info, response, url });
     });
@@ -67,8 +67,9 @@ The url of the email message will appear in your terminal output (`console.log({
 
 You can now:
 
-- visit `http://localhost:2501/message/${info.messageId}` to view all data related to a paticular message.
-- view only specific data:
-  - `http://localhost:2501/message/${info.messageId}/html`
-  - `http://localhost:2501/message/${info.messageId}/text`
+- visit `http://localhost:2501` for a list of all received messages.
+- visit `http://localhost:2501/<MESSAGE_ID>` for all data related to a paticular message.
+- view only specific data for a message:
+  - `http://localhost:2501/<MESSAGE_ID>/html`
+  - `http://localhost:2501/<MESSAGE_ID>/text`
   - ...
