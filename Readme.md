@@ -8,6 +8,10 @@ Persistance is ephemeral, in-memory only.
 
 I find this to be a convenient replacement for tools like [etherreal](https://ethereal.email), [mailcatcher](https://mailcatcher.me/) and similar.
 
+## Features
+
+Simple, fast, lightweight.
+
 ## Installation
 
 `npm install --save-dev @danielres/smtp-mini-dev-server`\
@@ -24,7 +28,7 @@ starts the SMTP server on port `2500` and the api server on port `2501`.
 Ports can be changed through environment variables:
 
 Example: \
-`DEV_SMTP_PORT=1234 DEV_SMTP_API_PORT=1235 yarn dev`
+`DEV_SMTP_PORT=1234 DEV_SMTP_API_PORT=1235 yarn smtp-dev`
 
 ## Example usage with nodemailer (in non-production environments)
 
