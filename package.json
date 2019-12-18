@@ -4,6 +4,7 @@
     "name": "Daniel Reszka",
     "url": "https://github.com/danielres"
   },
+  "homepage": "https://github.com/danielres/smtp-mini-dev-server",
   "bin": {
     "smtp-dev": "./index.js"
   },
