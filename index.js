@@ -34,7 +34,6 @@ const smtp = new SMTPServer({
 });
 
 app.get("/", (req, res) => {
-  const headers = ["messageId", "from", "to", "subject"];
   const messages = Object.values(mailbox).reverse();
   res.send(templates.home({ messages }));
 });
