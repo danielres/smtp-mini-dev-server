@@ -32,7 +32,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "mailparser": "^2.7.7",
-    "nodemon": "^2.0.2",
     "smtp-server": "^3.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
