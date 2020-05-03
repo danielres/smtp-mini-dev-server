@@ -6,12 +6,17 @@ const { SMTPServer } = require("smtp-server");
 
 const templates = require("./templates");
 
+let mailbox = {};
+
 const PORT = process.env.DEV_SMTP_PORT || 2500;
 const API_PORT = process.env.DEV_SMTP_API_PORT || 2501;
 
 const app = express();
 
-let mailbox = {};
+const filterByTo = (to, mailbox) =>
+  Object.entries(mailbox)
+    .filter(([k, v]) => v.to.value.filter((v) => v.address === to).length > 0)
+    .map(([k, v]) => ({ id: k, ...v }));
 
 const smtp = new SMTPServer({
   disabledCommands: ["STARTTLS"],
@@ -23,19 +28,25 @@ const smtp = new SMTPServer({
   logger: true,
   onData(stream, session, callback) {
     let result = "";
-    stream.on("data", chunk => (result += chunk));
+    stream.on("data", (chunk) => (result += chunk));
     stream.on("end", () => {
       simpleParser(result, {}, (err, parsed) => {
         mailbox[parsed.messageId] = parsed;
         callback();
       });
     });
-  }
+  },
 });
 
 app.get("/", (req, res) => {
   const messages = Object.values(mailbox).reverse();
   res.send(templates.home({ messages }));
+});
+
+app.get("/to/:to", (req, res) => {
+  console.log(JSON.stringify(mailbox, null, 2));
+  const { to } = req.params;
+  res.json(filterByTo(to, mailbox).reverse());
 });
 
 app.get("/:messageId", (req, res) => {
@@ -47,7 +58,7 @@ app.get("/:messageId/:field", (req, res) => {
   res.send(mailbox[messageId][field]);
 });
 
-smtp.on("error", err => {
+smtp.on("error", (err) => {
   console.error("Error %s", err.message);
 });
 
