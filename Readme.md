@@ -10,7 +10,10 @@ I find this to be a convenient replacement for tools like [etherreal](https://et
 
 ## Features
 
-Simple, fast, lightweight.
+- Simple, fast, lightweight.
+- Convenient for e2e testing (Cypress, puppeteer, ...).
+- Allows developers, testers, product managers to inspect sent emails, but guarantees no development/test/staging emails ever get sent to real recipients.
+- Faster than using third-party services.
 
 ## Installation
 
