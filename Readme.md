@@ -35,7 +35,7 @@ Example: \
 
 ## Example usage with nodemailer (in non-production environments)
 
-```
+```js
 const config = {
   host: "localhost",
   port: 2500,
