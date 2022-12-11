@@ -30,7 +30,7 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mailparser": "^2.7.7",
     "smtp-server": "^3.5.0"
   },
